@@ -41,7 +41,22 @@
             <td class="border px-3 py-2">{{ $task->registrar }}</td>
             <td class="border px-3 py-2">{{ $task->country }}</td>
             <td class="border px-3 py-2">{{ $task->brand }}</td>
-            <td class="border px-3 py-2">{{ $task->status }}</td>
+
+            <td class="border px-3 py-2">
+                
+                @php
+                    $class = match($task->status) {
+                        'pending'   => 'label-orange',
+                        'active'    => 'label-blue',
+                        'completed' => 'label-green',
+                        'error'     => 'label-red',
+                        default     => 'label-gray',
+                    };
+                @endphp
+            
+                <span class="{{ $class }}">{{ $task->status }}</span>
+            </td>
+
             <td class="border px-3 py-2">{{ $task->email_login }}</td>
             <td class="border px-3 py-2">{{ $task->proxy }}</td>
             <td class="border px-3 py-2">{{ $task->cloudflare_email }}</td>
