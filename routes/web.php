@@ -31,3 +31,4 @@ Route::post('/tasks/{id}/delete', [TaskController::class, 'delete'])->name('task
 
 Route::get('/proxies', [ProxyController::class, 'index']);
 Route::post('/proxies/store', [ProxyController::class, 'store']);
+Route::get('/proxies/create', [ProxyController::class, 'create']);
