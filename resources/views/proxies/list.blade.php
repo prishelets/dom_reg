@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Proxies</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+@extends('layout')
 
-<body class="p-6 bg-gray-100">
+@section('content')
 
 <div class="max-w-5xl mx-auto bg-white p-6 rounded shadow">
 
@@ -65,5 +60,4 @@
 
 </div>
 
-</body>
-</html>
+@endsection
