@@ -10,7 +10,7 @@ use App\Http\Controllers\Web\ProxyController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/tasks');
 });
 
 

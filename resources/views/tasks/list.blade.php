@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Tasks</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="p-4">
+@extends('layout')
 
-<h2>Tasks</h2>
+@section('content')
 
-<a href="/tasks/create"
-   class="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-md shadow hover:bg-green-700 mb-4">
-    ➕ <span>Add Task</span>
+<h1 class="text-2xl font-semibold mb-4">Tasks</h1>
+
+<a href="/tasks/create" 
+   class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mb-4 inline-block">
+    ➕ Add Task
 </a>
 
 @if(session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
+    <div class="bg-green-100 text-green-800 px-4 py-2 rounded mb-4">
+        {{ session('success') }}
+    </div>
 @endif
 
 <table class="min-w-full border border-gray-300 text-sm">
@@ -52,18 +50,17 @@
 
             <td class="border px-3 py-2 flex gap-2">
 
-                {{-- DELETE --}}
-                <form method="POST" action="/tasks/{{ $task->id }}/delete" onsubmit="return confirm('Are you sure you want to delete this task?');">
+                <form method="POST" action="/tasks/{{ $task->id }}/delete"
+                      onsubmit="return confirm('Delete this task?');">
                     @csrf
                     <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700">
                         Delete
                     </button>
                 </form>
 
-                {{-- OPEN IN INCOGNITO --}}
                 <a href="https://{{ $task->domain }}" target="_blank"
-                    class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700">
-                    Open Browser
+                   class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700">
+                    Open
                 </a>
 
             </td>
@@ -72,6 +69,4 @@
     </tbody>
 </table>
 
-
-</body>
-</html>
+@endsection

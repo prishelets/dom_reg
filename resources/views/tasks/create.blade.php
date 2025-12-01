@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Task</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+@extends('layout')
 
-<body class="min-h-screen bg-gray-100 p-6">
+@section('content')
 
 <div class="max-w-6xl mx-auto bg-white p-6 rounded shadow">
 
@@ -71,5 +66,4 @@
 
 </div>
 
-</body>
-</html>
+@endsection
