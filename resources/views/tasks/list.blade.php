@@ -18,7 +18,7 @@
 <table class="min-w-full border border-gray-300 text-sm">
     <thead class="bg-gray-100">
         <tr>
-            <th class="border px-3 py-2 text-left">ID</th>
+            
             <th class="border px-3 py-2 text-left">Domain</th>
             <th class="border px-3 py-2 text-left">Registrar</th>
             <th class="border px-3 py-2 text-left">Country</th>
@@ -36,7 +36,7 @@
     <tbody>
         @foreach($tasks as $task)
         <tr class="odd:bg-white even:bg-gray-50">
-            <td class="border px-3 py-2">{{ $task->id }}</td>
+            
             <td class="border px-3 py-2">{{ $task->domain }}</td>
             <td class="border px-3 py-2">{{ $task->registrar }}</td>
             <td class="border px-3 py-2">{{ $task->country }}</td>

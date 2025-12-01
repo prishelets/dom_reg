@@ -19,14 +19,3 @@ body {
 */
 
 
-@layer utilities {
-    .nav-bg {
-        @apply bg-gray-900;
-    }
-    .nav-text {
-        @apply text-gray-300 hover:text-white;
-    }
-    .nav-active {
-        @apply text-white underline;
-    }
-}

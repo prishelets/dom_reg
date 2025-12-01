@@ -3,40 +3,36 @@
 <head>
     <title>{{ $title ?? 'Control Panel' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <!-- GLOBAL BUTTON STYLES -->
-    <style>
-        .btn {
-            @apply px-4 py-2 rounded font-medium text-sm transition inline-block;
-        }
-        .btn-primary {
-            @apply bg-blue-600 text-white hover:bg-blue-700;
-        }
-        .btn-success {
-            @apply bg-green-600 text-white hover:bg-green-700;
-        }
-        .btn-danger {
-            @apply bg-red-600 text-white hover:bg-red-700;
-        }
-        .btn-gray {
-            @apply bg-gray-600 text-white hover:bg-gray-700;
-        }
-    </style>
 </head>
 
 <body class="bg-gray-100 min-h-screen">
 
-    <nav class="nav-bg text-white px-6 py-4 flex gap-6 shadow">
+    <nav class="bg-white border-b border-gray-300 px-6 py-3 flex gap-4">
+
     <a href="/tasks"
-       class="nav-text font-medium {{ request()->is('tasks*') ? 'nav-active' : '' }}">
+       class="px-3 py-1.5 rounded-md text-sm font-medium
+              {{ request()->is('tasks*') 
+                    ? 'bg-blue-600 text-white shadow' 
+                    : 'text-gray-700 hover:bg-gray-200' }}">
         Tasks
     </a>
 
     <a href="/proxies"
-       class="nav-text font-medium {{ request()->is('proxies*') ? 'nav-active' : '' }}">
+       class="px-3 py-1.5 rounded-md text-sm font-medium
+              {{ request()->is('proxies*') 
+                    ? 'bg-blue-600 text-white shadow' 
+                    : 'text-gray-700 hover:bg-gray-200' }}">
         Proxies
     </a>
+
+    <a href="/cards"
+   class="px-3 py-1.5 rounded-md text-sm font-medium
+          {{ request()->is('cards*') ? 'bg-blue-600 text-white shadow' : 'text-gray-700 hover:bg-gray-200' }}">
+    Cards
+</a>
+
 </nav>
+
 
     <!-- MAIN CONTENT -->
     <div class="p-6">
