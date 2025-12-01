@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\Web\TaskController;
-
+use App\Http\Controllers\Web\ProxyController;
 
 
 
@@ -30,3 +30,4 @@ Route::post('/tasks/store', [TaskController::class, 'store']);
 Route::post('/tasks/{id}/delete', [TaskController::class, 'delete'])->name('tasks.delete');
 
 Route::get('/proxies', [ProxyController::class, 'index']);
+Route::post('/proxies/store', [ProxyController::class, 'store']);
