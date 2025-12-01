@@ -28,8 +28,22 @@ body {
 }
 
 /* Colors */
-.label-blue   { @apply label bg-[#1D5BAE] text-white; }
-.label-green  { @apply label bg-green-600 text-white; }
-.label-red    { @apply label bg-red-600 text-white; }
-.label-orange { @apply label bg-orange-500 text-white; }
-.label-gray   { @apply label bg-gray-500 text-white; }
+.label-blue {
+    @apply inline-block text-xs font-semibold px-2 py-1 rounded-md bg-[#1D5BAE] text-white;
+}
+
+.label-green {
+    @apply inline-block text-xs font-semibold px-2 py-1 rounded-md bg-green-600 text-white;
+}
+
+.label-red {
+    @apply inline-block text-xs font-semibold px-2 py-1 rounded-md bg-red-600 text-white;
+}
+
+.label-orange {
+    @apply inline-block text-xs font-semibold px-2 py-1 rounded-md bg-orange-500 text-white;
+}
+
+.label-gray {
+    @apply inline-block text-xs font-semibold px-2 py-1 rounded-md bg-gray-500 text-white;
+}

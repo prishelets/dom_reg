@@ -4,13 +4,16 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Task;
+use App\Models\Log;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::orderBy('id', 'desc')->get();
+        $tasks = Task::withExists('logs')
+            ->orderBy('id', 'desc')
+            ->get();
 
         return view('tasks.list', [
             'tasks' => $tasks
@@ -66,5 +69,18 @@ class TaskController extends Controller
         $task->delete();
 
         return redirect('/tasks')->with('success', 'Task deleted successfully');
+    }
+
+    public function logs(Task $task)
+    {
+        $logs = Log::where('task_id', $task->id)
+            ->orderBy('created_at', 'asc')
+            ->get(['created_at', 'type', 'mode', 'text']);
+
+        return response()->json([
+            'success' => true,
+            'task_id' => $task->id,
+            'logs' => $logs,
+        ]);
     }
 }

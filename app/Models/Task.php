@@ -38,4 +38,19 @@ class Task extends Model
         'ns_at_registrar',
         'ns_last_check_at',
     ];
+
+    public function statusColorClass(): string
+    {
+        return match ($this->status) {
+            'creating registrar account' => 'bg-blue-600',
+            'completed'  => 'bg-green-600',
+            'error'      => 'bg-red-600',
+            default      => 'bg-gray-500',
+        };
+    }
+
+    public function logs()
+    {
+        return $this->hasMany(Log::class);
+    }
 }
