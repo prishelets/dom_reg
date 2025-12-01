@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+/* Где Tailwind ищет классы */
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+@source '../js/**/*.js';
+
+/* Темизация (по желанию) */
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* Какие-то свои глобальные стили можно добавить сюда
+body {
+    @apply bg-gray-100 text-gray-900;
+}
+*/
