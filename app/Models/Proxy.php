@@ -15,7 +15,10 @@ class Proxy extends Model
         'ip',
         'port',
         'active',
-        'last_used_at'
+        'last_used_at',
+        'success_count',
+        'error_count',
+        'label',
     ];
 
     public $timestamps = true;

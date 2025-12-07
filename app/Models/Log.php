@@ -10,9 +10,10 @@ class Log extends Model
 
     protected $fillable = [
         'task_id',
-        'mode',
+        'template_name',
         'type',
         'text',
+        'error_id',
         'created_at',
     ];
 }

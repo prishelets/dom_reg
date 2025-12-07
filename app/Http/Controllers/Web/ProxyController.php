@@ -28,6 +28,7 @@ class ProxyController extends Controller
         $validated = $request->validate([
             'default_protocol' => 'required|in:default,http,socks5',
             'proxies'          => 'required|string',
+            'label'            => 'nullable|string|max:255',
         ]);
 
         $lines = preg_split('/\r\n|\r|\n/', trim($validated['proxies']));
@@ -42,11 +43,35 @@ class ProxyController extends Controller
         $created = 0;
         foreach ($lines as $line) {
             $proxyData = $this->parseProxyLine($line, $validated['default_protocol']);
-            Proxy::create($proxyData + ['active' => false]);
+            $payload = $proxyData + [
+                'active' => false,
+                'label'  => $validated['label'] ?? null,
+            ];
+            Proxy::create($payload);
             $created++;
         }
 
         return redirect('/proxies')->with('success', "Added {$created} proxies.");
+    }
+
+    public function destroy($id)
+    {
+        $proxy = Proxy::find($id);
+
+        if (!$proxy) {
+            return redirect('/proxies')->with('error', 'Proxy not found.');
+        }
+
+        $proxy->delete();
+
+        return redirect('/proxies')->with('success', 'Proxy deleted.');
+    }
+
+    public function destroyAll()
+    {
+        Proxy::query()->delete();
+
+        return redirect('/proxies')->with('success', 'All proxies deleted.');
     }
 
     private function parseProxyLine(string $line, string $defaultProtocol): array

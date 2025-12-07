@@ -14,9 +14,12 @@ class Card extends Model
         'exp_month',
         'exp_year',
         'cvv',
-        'bank',
-        'active',
+        'label',
     ];
 
     public $timestamps = true;
+
+    protected $casts = [
+        'card_last_used_at' => 'datetime',
+    ];
 }

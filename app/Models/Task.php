@@ -17,7 +17,7 @@ class Task extends Model
         'status',
         'registrar_email',
         'registrar_login',
-        'email_login',
+        'registrar_password',
         'email_password',
         'first_name',
         'last_name',
@@ -29,7 +29,9 @@ class Task extends Model
         'security_qa',
         'domain_paid',
         'domain_paid_date',
-        'domain_price',
+        'domain_paid_price',
+        'domain_paid_currency',
+        'domain_paid_card_number',
         'cloudflare_email',
         'cloudflare_password',
         'api_key_global',
@@ -37,15 +39,23 @@ class Task extends Model
         'ns_servers',
         'ns_at_registrar',
         'ns_last_check_at',
+        'account_created_at',
+        'account_ready_at',
+        'account_next_check_at',
     ];
 
     public function statusColorClass(): string
     {
-        return match ($this->status) {
-            'creating registrar account' => 'bg-blue-600',
-            'completed'  => 'bg-green-600',
-            'error'      => 'bg-red-600',
-            default      => 'bg-gray-500',
+        return match (strtolower((string) $this->status)) {
+
+            'domain purchased' => 'badge-status badge-status-blue',
+
+            'domain is taken' => 'badge-status badge-status-red',
+
+            'creating registrar account' => 'badge-status badge-status-blue',
+            'registrar account created' => 'badge-status badge-status-green',
+            
+            default => 'badge-status badge-status-gray',
         };
     }
 

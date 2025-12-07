@@ -2,68 +2,59 @@
 
 @section('content')
 
-<div class="max-w-6xl mx-auto bg-white p-6 rounded shadow">
+<div class="page-header">
+    <h1 class="h3 mb-0">Create Task</h1>
+    <a href="/tasks" class="btn btn-outline-secondary">← Back to list</a>
+</div>
 
-    <h2 class="text-2xl font-semibold mb-6">Create Task</h2>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
-    <form method="POST" action="/tasks/store" class="space-y-6">
+<div class="table-card">
+    <form method="POST" action="/tasks/store" class="row g-4">
         @csrf
+        <input type="hidden" name="form_context" value="page">
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <!-- LEFT COLUMN -->
-            <div class="space-y-4">
-
-                <!-- Registrar -->
+        <div class="col-12 col-md-4">
+            <div class="d-flex flex-column gap-3">
                 <div>
-                    <label class="block font-medium mb-1">Registrar</label>
-                    <select name="registrar" class="w-full border rounded px-3 py-2">
+                    <label class="form-label fw-semibold">Registrar</label>
+                    <select name="registrar" class="form-select">
                         <option value="dynadot.com">Dynadot.com</option>
-                        <option value="namecheap.com">Namecheap.com</option>
-                        <option value="godaddy.com">GoDaddy.com</option>
                     </select>
                 </div>
 
-                <!-- Country -->
                 <div>
-                    <label class="block font-medium mb-1">Country</label>
-                    <select name="country" class="w-full border rounded px-3 py-2">
+                    <label class="form-label fw-semibold">Country</label>
+                    <select name="country" class="form-select">
                         <option value="uk">United Kingdom</option>
-                        <option value="us">United States</option>
-                        <option value="ua">Ukraine</option>
-                        <option value="de">Germany</option>
+                        <option value="it">Italy</option>
                     </select>
                 </div>
 
-                <!-- Brand -->
                 <div>
-                    <label class="block font-medium mb-1">Brand</label>
-                    <input type="text" name="brand"
-                           class="w-full border rounded px-3 py-2"
-                           placeholder="Brand name">
+                    <label class="form-label fw-semibold">Brand</label>
+                    <input type="text" name="brand" class="form-control" placeholder="Brand name">
                 </div>
-
             </div>
-
-            <!-- RIGHT COLUMN -->
-            <div class="md:col-span-2">
-                <label class="block font-medium mb-1">Domains (one per line)</label>
-                <textarea name="domains"
-                          rows="12"
-                          class="w-full border rounded px-3 py-2"></textarea>
-            </div>
-
         </div>
 
-        <!-- BUTTON -->
-        <div class="pt-4">
-            <button class="bg-green-600 text-white px-5 py-2 rounded hover:bg-green-700">
-                Create Task
-            </button>
+        <div class="col-12 col-md-8">
+            <label class="form-label fw-semibold">Domains (one per line)</label>
+            <textarea name="domains" rows="12" class="form-control" placeholder="example.com"></textarea>
         </div>
 
+        <div class="col-12 text-end">
+            <button class="btn btn-success">Create Task</button>
+        </div>
     </form>
-
 </div>
 
 @endsection
